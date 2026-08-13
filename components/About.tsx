@@ -101,6 +101,9 @@ export default function About() {
         </div>
 
       </div>
+      
+      {/* Centered bottom flow line linking to next section */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1px] h-24 bg-gradient-to-t from-[rgba(201,168,118,0.4)] to-transparent pointer-events-none hidden lg:block z-10" />
     </section>
   );
 }

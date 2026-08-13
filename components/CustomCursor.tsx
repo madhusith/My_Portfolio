@@ -43,23 +43,12 @@ export default function CustomCursor() {
       const target = (e.target as HTMLElement).closest("[data-cursor]") as HTMLElement;
       const isLink = (e.target as HTMLElement).closest("a, button, input, textarea, [role='button']");
 
-      if (target) {
-        const cursorType = target.getAttribute("data-cursor");
-        if (cursorType) {
-          setText(cursorType.toUpperCase());
-          gsap.to(cursor, {
-            scale: 3.5,
-            backgroundColor: "#C9A876",
-            borderColor: "#C9A876",
-            color: "#0A0908",
-            duration: 0.2,
-          });
-        }
-      } else if (isLink) {
+      if (target || isLink) {
+        setText("");
         gsap.to(cursor, {
-          scale: 2,
-          borderColor: "#E8D9BC",
-          backgroundColor: "rgba(201, 168, 118, 0.15)",
+          scale: 2.2,
+          borderColor: "#C9A876",
+          backgroundColor: "rgba(201, 168, 118, 0.08)",
           color: "transparent",
           duration: 0.2,
         });

@@ -59,9 +59,25 @@ export default function WhatIBuild() {
     <section
       ref={containerRef}
       id="skills"
-      className="relative min-h-screen w-full flex items-center justify-center py-24 px-6 md:px-12 bg-[#0A0908]"
+      className="relative min-h-screen w-full flex items-center justify-center py-24 px-6 md:px-12 bg-[#0A0908] overflow-hidden"
     >
-      <div className="max-w-[1400px] w-full flex flex-col justify-start">
+      {/* Background Vertical Flow Line linking sections */}
+      <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-[rgba(201,168,118,0.4)] via-[rgba(201,168,118,0.06)] to-[rgba(201,168,118,0.4)] pointer-events-none z-0 hidden lg:block">
+        {/* Technical diamond guide ticks along the vertical thread */}
+        <div className="absolute top-12 left-1/2 -translate-x-1/2 w-1.5 h-1.5 border border-[#C9A876]/40 rotate-45 bg-[#0A0908]" />
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-1.5 h-1.5 border border-[#C9A876]/40 rotate-45 bg-[#0A0908]" />
+        
+        {/* Centered camera focal target ornament in the middle of the flow line */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 border border-[#C9A876]/15 rounded-full flex items-center justify-center bg-[#0A0908] z-10 shadow-[0_0_15px_rgba(0,0,0,0.8)]">
+          <div className="w-8 h-8 border border-dashed border-[#C9A876]/25 rounded-full flex items-center justify-center animate-[spin_20s_linear_infinite]">
+            <div className="w-2 h-2 border border-[#C9A876]/30 rounded-full flex items-center justify-center">
+              <div className="w-0.5 h-0.5 bg-[#C9A876]/50 rounded-full" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-[1400px] w-full flex flex-col justify-start z-10">
         
         {/* Title */}
         <div className="text-[11px] font-bold tracking-[0.3em] text-[#C9A876] uppercase mb-4 font-sans-body">

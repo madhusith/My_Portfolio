@@ -7,12 +7,43 @@ import ProjectCaseStudy from "./ProjectCaseStudy";
 
 export default function ProjectsGrid() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const doorsTriggerRef = useRef<HTMLDivElement>(null);
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const ctx = gsap.context(() => {
+      // 1. Vault Doors Entrance Slide (Only for desktop)
+      const isMobile = window.innerWidth < 1024;
+      if (!isMobile && !prefersReducedMotion) {
+        const leftDoor = doorsTriggerRef.current?.querySelector(".left-door");
+        const rightDoor = doorsTriggerRef.current?.querySelector(".right-door");
+
+        if (leftDoor && rightDoor) {
+          const doorsTl = gsap.timeline({
+            scrollTrigger: {
+              trigger: doorsTriggerRef.current,
+              start: "top top",
+              end: "bottom top",
+              pin: true,
+              scrub: true,
+              anticipatePin: 1,
+            },
+          });
+
+          doorsTl.to(leftDoor, {
+            xPercent: -100,
+            ease: "power2.inOut",
+          }, 0)
+          .to(rightDoor, {
+            xPercent: 100,
+            ease: "power2.inOut",
+          }, 0);
+        }
+      }
+
+      // 2. Individual Project Panels
       const panels = containerRef.current?.querySelectorAll(".project-panel");
       if (panels && panels.length > 0) {
         panels.forEach((panel, index) => {
@@ -21,7 +52,7 @@ export default function ProjectsGrid() {
           const inner = panel.querySelector(".visual-card-inner");
           const textElements = panel.querySelectorAll(".reveal-element");
 
-          // 1. Staggered text reveals
+          // Staggered text reveals
           gsap.fromTo(
             textElements,
             { opacity: 0, y: 35 },
@@ -44,7 +75,7 @@ export default function ProjectsGrid() {
             return;
           }
 
-          // 2. Camera Exposure Shutter slide open for cards
+          // Camera Exposure Shutter slide open for cards
           if (wrapper) {
             gsap.fromTo(
               wrapper,
@@ -64,7 +95,7 @@ export default function ProjectsGrid() {
             );
           }
 
-          // 3. Subtle Parallax offset on visual details
+          // Parallax offset on visual details
           if (inner) {
             gsap.fromTo(
               inner,
@@ -245,17 +276,68 @@ export default function ProjectsGrid() {
 
   return (
     <section
-      ref={containerRef}
       id="work"
-      className="relative w-full min-h-screen py-24 px-6 md:px-12 bg-[#0A0908]"
+      ref={containerRef}
+      className="relative w-full bg-[#0A0908] border-b border-[rgba(201,168,118,0.08)] z-30"
     >
-      <div className="max-w-[1400px] mx-auto w-full flex flex-col">
+      {/* Pinned Vault Doors Section (Height 150vh, sticky viewport inside) */}
+      <div
+        ref={doorsTriggerRef}
+        className="relative w-full h-[150vh] bg-[#0A0908] hidden lg:block overflow-visible"
+      >
+        <div className="sticky top-0 left-0 w-full h-screen overflow-hidden flex items-center justify-center">
+          
+          {/* Vertical flow line behind doors (running top to bottom) */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-full bg-gradient-to-b from-[rgba(201,168,118,0.4)] via-[rgba(201,168,118,0.1)] to-[rgba(201,168,118,0.4)] z-0 hidden lg:block" />
+
+          {/* Background Branding (Revealed behind the doors) */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0C0B0A] z-10">
+            <div className="text-center">
+              <div className="text-[11px] font-bold tracking-[0.3em] text-[#C9A876] uppercase mb-4 font-sans-body animate-pulse">
+                SECTION 02
+              </div>
+              <h2 className="font-serif-display text-[clamp(2.5rem,6vw,4rem)] font-light text-[#F4F1EA] tracking-wide mb-6">
+                Selected Work
+              </h2>
+              <div className="w-[1px] h-20 bg-gradient-to-b from-[#C9A876] to-transparent mx-auto mt-8 opacity-60" />
+            </div>
+          </div>
+
+          {/* Left Door */}
+          <div className="left-door absolute left-0 top-0 w-1/2 h-full bg-[#0A0908] border-r border-[#C9A876]/35 flex items-center justify-end overflow-visible z-20">
+            {/* Left half circular lock */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-[50%] w-[100px] h-[200px] border-t border-b border-l border-[#C9A876]/20 rounded-l-full bg-[#0C0B0A] flex items-center justify-end pr-4 z-50 shadow-[inset_-5px_0_10px_rgba(0,0,0,0.5)]">
+              <span className="font-serif-display text-[10px] text-[#C9A876]/50 tracking-[0.3em] uppercase rotate-90 origin-center">
+                SELECT
+              </span>
+              <div className="w-1.5 h-1.5 border border-[#C9A876]/50 rounded-full ml-3 animate-pulse" />
+            </div>
+          </div>
+
+          {/* Right Door */}
+          <div className="right-door absolute right-0 top-0 w-1/2 h-full bg-[#0A0908] border-l border-[#C9A876]/35 flex items-center justify-start overflow-visible z-20">
+            {/* Right half circular lock */}
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-[50%] w-[100px] h-[200px] border-t border-b border-r border-[#C9A876]/20 rounded-r-full bg-[#0C0B0A] flex items-center justify-start pl-4 z-50 shadow-[inset_5px_0_10px_rgba(0,0,0,0.5)]">
+              <div className="w-1.5 h-1.5 border border-[#C9A876]/50 rounded-full mr-3 animate-pulse" />
+              <span className="font-serif-display text-[10px] text-[#C9A876]/50 tracking-[0.3em] uppercase rotate-90 origin-center">
+                WORK
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Background vertical line running down the main project panels list */}
+      <div className="absolute top-[150vh] bottom-0 left-1/2 -translate-x-1/2 w-[1px] bg-gradient-to-b from-[rgba(201,168,118,0.4)] via-[rgba(201,168,118,0.08)] to-transparent pointer-events-none z-0 hidden lg:block" />
+
+      <div className="max-w-[1400px] mx-auto w-full flex flex-col py-32 px-6 md:px-12 z-10 relative">
         
-        {/* Section Header */}
-        <div className="text-[11px] font-bold tracking-[0.3em] text-[#C9A876] uppercase mb-4 font-sans-body">
+        {/* Section Header (Mobile only, desktop has door reveal) */}
+        <div className="text-[11px] font-bold tracking-[0.3em] text-[#C9A876] uppercase mb-4 font-sans-body lg:hidden">
           PORTFOLIO
         </div>
-        <h2 className="font-serif-display text-[clamp(2.2rem,5vw,3.5rem)] font-light text-[#F4F1EA] mb-20">
+        <h2 className="font-serif-display text-[clamp(2.2rem,5vw,3.5rem)] font-light text-[#F4F1EA] mb-20 lg:hidden">
           Selected Work
         </h2>
 

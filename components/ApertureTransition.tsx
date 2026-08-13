@@ -91,8 +91,8 @@ export default function ApertureTransition() {
       >
         {/* Background ambient chapter label */}
         <div className="absolute inset-0 bg-[#0A0908] flex items-center justify-center z-0 select-none">
-          <div className="text-center opacity-25">
-            <span className="font-serif-display text-[8vw] font-light text-[#C9A876] tracking-widest">
+          <div className="text-center opacity-70">
+            <span className="font-serif-display text-[8vw] font-light text-[#C9A876] tracking-[0.4em]">
               CHAPTER 01
             </span>
           </div>
@@ -118,9 +118,10 @@ export default function ApertureTransition() {
         >
           <defs>
             <linearGradient id="shutter-blade-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#C9A876" stopOpacity="0.75" />
-              <stop offset="0.8%" stopColor="#C9A876" stopOpacity="0.35" />
-              <stop offset="2.5%" stopColor="#0A0908" />
+              <stop offset="0%" stopColor="#C9A876" stopOpacity="0.8" />
+              <stop offset="1%" stopColor="#C9A876" stopOpacity="0.5" />
+              <stop offset="3.5%" stopColor="#2D2418" stopOpacity="0.25" />
+              <stop offset="5.5%" stopColor="#0A0908" />
               <stop offset="100%" stopColor="#0A0908" />
             </linearGradient>
           </defs>
