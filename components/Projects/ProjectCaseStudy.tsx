@@ -1,0 +1,202 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { X, ArrowLeft, Cpu, Terminal, ShieldAlert, Award } from "lucide-react";
+import gsap from "gsap";
+import { Project } from "@/lib/projects";
+
+interface ProjectCaseStudyProps {
+  project: Project;
+  onClose: () => void;
+}
+
+export default function ProjectCaseStudy({ project, onClose }: ProjectCaseStudyProps) {
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Disable body scroll when modal is open
+    document.documentElement.classList.add("lenis-stopped");
+    document.body.style.overflow = "hidden";
+
+    // GSAP Entrance
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        overlayRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.3, ease: "power2.out" }
+      );
+      
+      gsap.fromTo(
+        contentRef.current,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, delay: 0.1, ease: "power3.out" }
+      );
+    });
+
+    return () => {
+      document.documentElement.classList.remove("lenis-stopped");
+      document.body.style.overflow = "";
+      ctx.revert();
+    };
+  }, []);
+
+  const handleClose = () => {
+    gsap.to(contentRef.current, {
+      y: 40,
+      opacity: 0,
+      duration: 0.3,
+      ease: "power2.in",
+    });
+
+    gsap.to(overlayRef.current, {
+      opacity: 0,
+      duration: 0.3,
+      ease: "power2.in",
+      onComplete: onClose,
+    });
+  };
+
+  return (
+    <div
+      ref={overlayRef}
+      className="fixed inset-0 z-[5000] w-full h-full bg-[#0A0908]/95 backdrop-blur-md overflow-y-auto flex justify-center py-10 px-4 md:px-8"
+    >
+      <div
+        ref={contentRef}
+        className="relative w-full max-w-[1100px] h-fit bg-[#15130F] border border-[rgba(201,168,118,0.15)] p-6 md:p-12 text-[#F4F1EA] flex flex-col gap-12"
+      >
+        {/* Close Button Header */}
+        <div className="flex justify-between items-center border-b border-[rgba(201,168,118,0.1)] pb-6">
+          <button
+            onClick={handleClose}
+            className="flex items-center gap-2 text-xs font-bold tracking-[0.2em] text-[#C9A876] hover:text-[#E8D9BC] transition-colors focus:outline-none focus:ring-1 focus:ring-[#C9A876]"
+          >
+            <ArrowLeft size={16} /> &larr; ALL PROJECTS
+          </button>
+          
+          <button
+            onClick={handleClose}
+            aria-label="Close case study"
+            className="p-2 border border-[rgba(201,168,118,0.2)] hover:border-[#C9A876] hover:text-[#C9A876] transition-colors focus:outline-none focus:ring-1 focus:ring-[#C9A876]"
+          >
+            <X size={18} />
+          </button>
+        </div>
+
+        {/* Title Block */}
+        <div className="flex flex-col gap-4">
+          <div className="text-[11px] font-bold tracking-[0.3em] text-[#C9A876] uppercase">
+            {project.category}
+          </div>
+          <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-8">
+            <span className="font-serif-display text-4xl md:text-5xl font-light">
+              {project.name}
+            </span>
+            <span className="font-serif-display text-lg text-[#8C877C] italic">
+              Project {project.number}
+            </span>
+          </div>
+          <p className="font-serif-display text-xl md:text-2xl text-[#E8D9BC] font-light leading-relaxed max-w-3xl border-l border-[#C9A876] pl-6 mt-4">
+            &ldquo;{project.tagline}&rdquo;
+          </p>
+        </div>
+
+        {/* Grid: Overview & Metadata */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 border-t border-b border-[rgba(201,168,118,0.1)] py-8">
+          {/* Overview text */}
+          <div className="lg:col-span-8 flex flex-col gap-4">
+            <h3 className="font-serif-display text-lg text-[#C9A876] font-medium uppercase tracking-wider">
+              Overview
+            </h3>
+            <p className="font-sans-body text-sm md:text-base text-[#8C877C] leading-relaxed">
+              {project.description}
+            </p>
+          </div>
+
+          {/* Tech Stack list */}
+          <div className="lg:col-span-4 flex flex-col gap-4">
+            <h3 className="font-serif-display text-lg text-[#C9A876] font-medium uppercase tracking-wider">
+              Technology Stack
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {project.stack.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1 bg-[#1E1B15] text-[#F4F1EA] text-[10px] font-bold tracking-wider font-sans-body border border-[rgba(201,168,118,0.1)]"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Grid: Problem vs Solution */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          {/* Problem */}
+          <div className="flex flex-col gap-4 bg-[#1E1B15] p-6 border-l-2 border-red-500/50">
+            <div className="flex items-center gap-3 text-red-400">
+              <ShieldAlert size={20} />
+              <h4 className="font-serif-display text-lg font-medium">The Challenge</h4>
+            </div>
+            <p className="font-sans-body text-xs md:text-sm text-[#8C877C] leading-relaxed">
+              {project.problem}
+            </p>
+          </div>
+
+          {/* Solution */}
+          <div className="flex flex-col gap-4 bg-[#1E1B15] p-6 border-l-2 border-[#C9A876]/50">
+            <div className="flex items-center gap-3 text-[#C9A876]">
+              <Cpu size={20} />
+              <h4 className="font-serif-display text-lg font-medium">The Engineering</h4>
+            </div>
+            <p className="font-sans-body text-xs md:text-sm text-[#8C877C] leading-relaxed">
+              {project.solution}
+            </p>
+          </div>
+        </div>
+
+        {/* Section: Key Features */}
+        <div className="flex flex-col gap-6">
+          <div className="flex items-center gap-3 text-[#E8D9BC]">
+            <Terminal size={18} />
+            <h4 className="font-serif-display text-lg uppercase tracking-wider">Key Features</h4>
+          </div>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {project.features.map((feature, idx) => (
+              <li
+                key={idx}
+                className="flex items-start gap-3 font-sans-body text-xs md:text-sm text-[#8C877C] leading-relaxed border-b border-[rgba(201,168,118,0.06)] pb-2"
+              >
+                <span className="text-[#C9A876] font-bold">&bull;</span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Section: Outcomes */}
+        <div className="flex flex-col gap-4 bg-[#1C1A16]/50 p-6 md:p-8 border border-[rgba(201,168,118,0.12)]">
+          <div className="flex items-center gap-3 text-[#C9A876]">
+            <Award size={20} />
+            <h4 className="font-serif-display text-lg uppercase tracking-wider">Impact & Outcome</h4>
+          </div>
+          <p className="font-sans-body text-sm md:text-base text-[#F4F1EA] italic leading-relaxed">
+            &ldquo;{project.outcome}&rdquo;
+          </p>
+        </div>
+
+        {/* Case study footer spacer */}
+        <div className="flex justify-center border-t border-[rgba(201,168,118,0.1)] pt-8">
+          <button
+            onClick={handleClose}
+            className="px-8 py-3 border border-[#C9A876] text-[#C9A876] hover:bg-[#C9A876] hover:text-[#0A0908] text-xs font-bold tracking-[0.2em] font-sans-body transition-all duration-300"
+          >
+            CLOSE CASE STUDY
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
