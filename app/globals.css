@@ -10,8 +10,8 @@
   --color-ink-muted: #8C877C;
   --color-line: rgba(201, 168, 118, 0.18);
 
-  --font-display: var(--font-display), Cormorant Garamond, serif;
-  --font-body: var(--font-body), Manrope, sans-serif;
+  --font-display: var(--font-display-custom), Cormorant Garamond, serif;
+  --font-body: var(--font-body-custom), Manrope, sans-serif;
   
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

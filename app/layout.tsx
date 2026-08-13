@@ -6,14 +6,14 @@ import CustomCursor from "@/components/CustomCursor";
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "500", "600"],
-  variable: "--font-display",
+  variable: "--font-display-custom",
   display: "swap",
 });
 
 const manrope = Manrope({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
-  variable: "--font-body",
+  variable: "--font-body-custom",
   display: "swap",
 });
 
@@ -33,7 +33,7 @@ export default function RootLayout({
       className={`${cormorant.variable} ${manrope.variable} h-full antialiased dark`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[#0A0908] text-[#F4F1EA] custom-cursor-active overflow-x-hidden">
+      <body className="min-h-full flex flex-col bg-[#0A0908] text-[#F4F1EA] custom-cursor-active overflow-x-hidden" suppressHydrationWarning>
         {/* Cinematic Film Grain Overlay */}
         <div className="noise-overlay" />
         
