@@ -118,3 +118,34 @@ html.lenis body {
   backdrop-filter: blur(12px);
   border: 1px solid rgba(201, 168, 118, 0.08);
 }
+
+/* Bokeh floating light leaks */
+@keyframes float-bokeh {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, -60px) scale(1.12);
+  }
+  100% {
+    transform: translate(-30px, 30px) scale(0.95);
+  }
+}
+
+/* Floating gold dust particles */
+@keyframes float-dust {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100px) translateX(15px);
+    opacity: 0;
+  }
+}

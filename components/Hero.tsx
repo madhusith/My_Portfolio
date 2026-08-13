@@ -3,6 +3,27 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Pre-defined static values for glowing elements to avoid hydration mismatch
+const glowItems = [
+  { size: 160, left: 15, top: 20, speed: 30, delay: -5, opacity: 0.02 },
+  { size: 280, left: 70, top: 30, speed: 40, delay: -12, opacity: 0.015 },
+  { size: 200, left: 40, top: 65, speed: 35, delay: -8, opacity: 0.02 }
+];
+
+const dustItems = [
+  { size: 3, left: 8, top: 75, speed: 12, delay: -1, opacity: 0.35 },
+  { size: 4, left: 22, top: 45, speed: 15, delay: -5, opacity: 0.25 },
+  { size: 2, left: 38, top: 85, speed: 10, delay: -3, opacity: 0.4 },
+  { size: 5, left: 50, top: 25, speed: 18, delay: -8, opacity: 0.22 },
+  { size: 3, left: 62, top: 65, speed: 14, delay: -2, opacity: 0.3 },
+  { size: 4, left: 78, top: 15, speed: 16, delay: -11, opacity: 0.25 },
+  { size: 2, left: 92, top: 55, speed: 11, delay: -4, opacity: 0.4 },
+  { size: 5, left: 85, top: 80, speed: 17, delay: -7, opacity: 0.22 }
+];
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -114,6 +135,44 @@ export default function Hero() {
       id="home"
       className="relative min-h-[100svh] w-full flex items-center justify-center pt-24 px-6 md:px-12 overflow-hidden bg-[#0A0908]"
     >
+      {/* Ambient Moving Elements (Soft Glow Spheres & Floating Gold Dust) */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">
+        
+        {/* Soft Golden Ambient Glow Spots */}
+        {glowItems.map((item, index) => (
+          <div
+            key={`glow-${index}`}
+            className="absolute rounded-full bg-[#C9A876] blur-[80px] opacity-10 pointer-events-none mix-blend-screen"
+            style={{
+              width: `${item.size}px`,
+              height: `${item.size}px`,
+              left: `${item.left}%`,
+              top: `${item.top}%`,
+              opacity: item.opacity,
+              animation: `float-bokeh ${item.speed}s ease-in-out infinite alternate`,
+              animationDelay: `${item.delay}s`,
+            }}
+          />
+        ))}
+
+        {/* Floating Embers / Golden Dust Particles */}
+        {dustItems.map((item, index) => (
+          <div
+            key={`dust-${index}`}
+            className="absolute rounded-full bg-[#C9A876] pointer-events-none shadow-[0_0_8px_rgba(201,168,118,0.8)]"
+            style={{
+              width: `${item.size}px`,
+              height: `${item.size}px`,
+              left: `${item.left}%`,
+              top: `${item.top}%`,
+              opacity: item.opacity,
+              animation: `float-dust ${item.speed}s linear infinite`,
+              animationDelay: `${item.delay}s`,
+            }}
+          />
+        ))}
+      </div>
+
       <div className="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center z-10">
         
         {/* Left Column: Typography Content */}

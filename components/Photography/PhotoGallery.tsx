@@ -128,12 +128,35 @@ export default function PhotoGallery() {
             </p>
           </div>
           
-          {/* Identity/Camera Line */}
-          <div className="flex items-center gap-4 text-[#8C877C] font-sans-body text-xs border-l border-[rgba(201,168,118,0.18)] pl-6">
-            <Camera size={20} className="text-[#C9A876]" />
-            <div>
-              <p className="text-[#F4F1EA] font-bold">Canon EOS 90D</p>
-              <p className="text-[10px]">Prime glass setups</p>
+          {/* Camera Gear & Rome Pixels Brand Alignment */}
+          <div className="flex items-center gap-6 md:gap-8">
+            {/* Identity/Camera Line */}
+            <div className="hidden sm:flex items-center gap-3 text-[#8C877C] font-sans-body text-xs border-r border-[rgba(201,168,118,0.15)] pr-6 h-10">
+              <Camera size={16} className="text-[#C9A876]" />
+              <div>
+                <p className="text-[#F4F1EA] font-semibold">Canon EOS 90D</p>
+                <p className="text-[10px] opacity-75">Prime glass setups</p>
+              </div>
+            </div>
+
+            {/* ROME PIXELS Logo Component */}
+            <div className="flex flex-col items-center justify-center text-center px-4 py-2.5 border border-[rgba(201,168,118,0.15)] bg-[#1E1B15]/40 select-none">
+              <div className="font-serif-display text-base leading-none text-[#F4F1EA] tracking-[0.1em] flex flex-col items-center">
+                <span className="flex items-center justify-center relative font-light tracking-[0.18em] ml-1">
+                  R
+                  <span className="inline-block relative">
+                    O
+                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#C9A876] text-[6px] mt-[0.5px]">✦</span>
+                  </span>
+                  M E
+                </span>
+                <span className="font-light tracking-[0.08em] -mt-0.5 text-[#C9A876]">
+                  PIXELS
+                </span>
+              </div>
+              <div className="text-[6px] font-bold tracking-[0.3em] text-[#8C877C] uppercase font-sans-body mt-1 border-t border-[rgba(201,168,118,0.12)] pt-1 w-full">
+                TRAVEL PHOTOGRAPHY
+              </div>
             </div>
           </div>
         </div>
@@ -208,8 +231,17 @@ export default function PhotoGallery() {
           <p className="font-serif-display text-lg md:text-xl italic text-[#8C877C] max-w-xl font-light">
             &ldquo;Technology captures information. Photography captures emotion.&rdquo;
           </p>
-          <div className="text-[10px] font-bold tracking-[0.25em] text-[#C9A876] uppercase font-sans-body">
-            THANUSHIKA MADHUSITH &middot; PHOTOGRAPHY
+          <div className="flex items-center gap-4">
+            <span className="text-[10px] font-bold tracking-[0.25em] text-[#C9A876] uppercase font-sans-body">
+              THANUSHIKA MADHUSITH
+            </span>
+            <span className="text-[#8C877C]/40 text-xs font-serif-display">&times;</span>
+            <div className="flex items-center gap-1 font-serif-display text-xs tracking-wider text-[#F4F1EA] select-none">
+              <span>R</span>
+              <span className="relative">O<span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#C9A876] text-[4px] mt-[0.5px]">✦</span></span>
+              <span>ME</span>
+              <span className="text-[#C9A876] ml-0.5">PIXELS</span>
+            </div>
           </div>
         </div>
       </div>
