@@ -106,7 +106,7 @@ export default function Nav() {
               download="Thanushika_Madhusith_CV.pdf"
               className="flex items-center gap-2 px-4 py-2 border border-[#C9A876] text-[#C9A876] hover:bg-[#C9A876] hover:text-[#0A0908] text-[10px] font-bold tracking-[0.2em] font-sans-body transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-[#C9A876] group/nav-btn"
             >
-              <span>CV</span>
+              <span>Download Resume</span>
               <Download size={12} className="transition-transform group-hover/nav-btn:translate-y-0.5 duration-300" />
             </a>
           </div>
