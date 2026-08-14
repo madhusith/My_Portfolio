@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import gsap from "gsap";
 
 const navLinks = [
@@ -88,18 +88,28 @@ export default function Nav() {
           </a>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleLinkClick(e, link.href)}
-                className="font-sans-body text-[11px] font-bold tracking-[0.25em] text-[#F4F1EA] hover:text-[#C9A876] transition-colors duration-300 focus:outline-none focus:ring-1 focus:ring-[#C9A876] focus:ring-offset-2 focus:ring-offset-[#0A0908] px-1 py-1"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+          <div className="hidden md:flex items-center gap-8">
+            <nav className="flex items-center gap-8">
+              {navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => handleLinkClick(e, link.href)}
+                  className="font-sans-body text-[11px] font-bold tracking-[0.25em] text-[#F4F1EA] hover:text-[#C9A876] transition-colors duration-300 focus:outline-none focus:ring-1 focus:ring-[#C9A876] focus:ring-offset-2 focus:ring-offset-[#0A0908] px-1 py-1"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+            <a
+              href="/resume.pdf"
+              download="Thanushika_Madhusith_CV.pdf"
+              className="flex items-center gap-2 px-4 py-2 border border-[#C9A876] text-[#C9A876] hover:bg-[#C9A876] hover:text-[#0A0908] text-[10px] font-bold tracking-[0.2em] font-sans-body transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-[#C9A876] group/nav-btn"
+            >
+              <span>CV</span>
+              <Download size={12} className="transition-transform group-hover/nav-btn:translate-y-0.5 duration-300" />
+            </a>
+          </div>
 
           {/* Mobile Menu Trigger */}
           <button
@@ -132,6 +142,14 @@ export default function Nav() {
                 {link.label}
               </a>
             ))}
+            <a
+              href="/resume.pdf"
+              download="Thanushika_Madhusith_CV.pdf"
+              className="mobile-link mt-4 flex items-center gap-2 px-6 py-3 border border-[#C9A876] text-[#C9A876] hover:bg-[#C9A876] hover:text-[#0A0908] text-xs font-bold tracking-[0.2em] font-sans-body transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-[#C9A876] group/mob-btn"
+            >
+              <span>DOWNLOAD CV</span>
+              <Download size={14} className="transition-transform group-hover/mob-btn:translate-y-0.5 duration-300" />
+            </a>
           </nav>
         </div>
       )}

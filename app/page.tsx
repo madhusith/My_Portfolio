@@ -13,6 +13,7 @@ import PhotoGallery from "@/components/Photography/PhotoGallery";
 import Lab from "@/components/Lab";
 import CurrentStack from "@/components/CurrentStack";
 import Journey from "@/components/Journey";
+import Credentials from "@/components/Credentials";
 import Philosophy from "@/components/Philosophy";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -58,6 +59,9 @@ export default function Home() {
 
             {/* Historical learning timeline */}
             <Journey />
+
+            {/* Credentials & achievements */}
+            <Credentials />
 
             {/* Mantra Philosophy quotes */}
             <Philosophy />
