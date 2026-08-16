@@ -40,10 +40,10 @@ const experienceHistory = [
     details: "Maintaining LMS virtual environments, stream coordinations, student portal databases, and automated billing approvals."
   },
   {
-    role: "IT Intern (3 Months)",
+    role: "Intern (3 Months)",
     company: "Sampath Bank Head Office (NSC Department)",
     period: "2024",
-    details: "Supported network administration, configuration monitoring, and database management operations."
+    details: "Supported network administration, configuration monitoring, and cheque monitoring."
   }
 ];
 
@@ -145,13 +145,13 @@ export default function Credentials() {
 
         {/* 4-Column Editorial Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
-          
+
           {/* Column 1: Academic History (Education) */}
           <div className="lg:col-span-3 flex flex-col gap-8 w-full border-t border-[rgba(201,168,118,0.18)] pt-8">
             <h3 className="font-serif-display text-base text-[#C9A876] tracking-wider uppercase font-light mb-2">
               01 / Academic History
             </h3>
-            
+
             {educationHistory.map((edu, idx) => (
               <div key={idx} className="credential-card flex flex-col gap-3 group">
                 <span className="font-mono text-[9px] text-[#8C877C] tracking-widest">{edu.period}</span>
@@ -181,7 +181,7 @@ export default function Credentials() {
             <h3 className="font-serif-display text-base text-[#C9A876] tracking-wider uppercase font-light mb-2">
               02 / Working Experience
             </h3>
-            
+
             {experienceHistory.map((exp, idx) => (
               <div key={idx} className="credential-card flex flex-col gap-3 group">
                 <span className="font-mono text-[9px] text-[#8C877C] tracking-widest">{exp.period}</span>
@@ -203,7 +203,7 @@ export default function Credentials() {
             <h3 className="font-serif-display text-base text-[#C9A876] tracking-wider uppercase font-light mb-2">
               03 / Leadership
             </h3>
-            
+
             {leadershipHistory.map((lead, idx) => (
               <div key={idx} className="credential-card flex flex-col gap-3 group">
                 <span className="font-mono text-[9px] text-[#8C877C] tracking-widest">{lead.period}</span>
@@ -225,16 +225,15 @@ export default function Credentials() {
             <h3 className="font-serif-display text-base text-[#C9A876] tracking-wider uppercase font-light mb-2">
               04 / Certs & Achievements
             </h3>
-            
+
             {certificationsAchievements.map((item, idx) => (
               <div key={idx} className="credential-card flex flex-col gap-2 group">
                 <div className="flex justify-between items-center">
                   <span className="font-mono text-[9px] text-[#8C877C] tracking-widest">{item.year}</span>
-                  <span className={`px-2 py-0.5 border text-[7px] font-bold tracking-widest font-sans-body ${
-                    item.type === "Certification" 
-                      ? "border-green-500/30 text-green-400/80 bg-green-500/5" 
+                  <span className={`px-2 py-0.5 border text-[7px] font-bold tracking-widest font-sans-body ${item.type === "Certification"
+                      ? "border-green-500/30 text-green-400/80 bg-green-500/5"
                       : "border-[#C9A876]/30 text-[#C9A876] bg-[#C9A876]/5"
-                  }`}>
+                    }`}>
                     {item.type.toUpperCase()}
                   </span>
                 </div>
