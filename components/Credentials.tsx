@@ -9,75 +9,91 @@ gsap.registerPlugin(ScrollTrigger);
 
 const educationHistory = [
   {
-    institution: "Sri Lanka Institute of Information Technology (SLIIT)",
-    degree: "BSc (Hons) in Information Technology",
-    specialization: "Specializing in Software Engineering (GPA: 3.8/4.0)",
-    period: "2023 — Present (Expected 2027)",
-    details: "Key Coursework: Object-Oriented Programming (Java), Data Structures & Algorithms, Database Management Systems (DBMS), Software Architecture & Design Patterns.",
-    achievements: "Dean's List honors for consecutive academic terms."
+    institution: "University of Kelaniya",
+    degree: "BSc (Hons) in IT",
+    specialization: "Department of Industrial Management",
+    period: "2025 — Present",
+    details: "Focusing on enterprise information systems, database architectures, and business operations.",
+    achievements: ""
   },
   {
-    institution: "Secondary Education",
-    degree: "High School / GCE Advanced Levels",
-    specialization: "Physical Sciences Stream (Physics, Chemistry, Combined Mathematics)",
-    period: "2012 — 2022",
-    details: "Strong background in analytical thinking, calculus, and physics fundamentals.",
-    achievements: "Top grade scores in physics and combinatorics."
+    institution: "Ananda College, Colombo",
+    degree: "School Education",
+    specialization: "G.C.E. Advanced Levels (Physical Science Stream)",
+    period: "2010 — 2024",
+    details: "Active involvement in astronomy studies and student broadcasting operations.",
+    achievements: "Senior member of student committees."
   }
 ];
 
 const experienceHistory = [
   {
-    role: "Software Engineering Intern",
-    company: "Lanka Digital Systems (Pvt) Ltd",
-    period: "6 Months (2025)",
-    details: "Collaborated in developing enterprise dashboard applications. Wrote RESTful API controllers, optimized Sequelize/Prisma database index lookups, and integrated LangChain OpenAI pipeline workers.",
-    leadership: "Led a team of three interns to deploy real-time notifications system utilizing Socket.IO."
-  },
-  {
-    role: "Freelance Systems Developer",
-    company: "Self-Employed / Freelance Markets",
-    period: "2023 — Present",
-    details: "Constructed cross-platform Electron POS systems for regional bookstore retailers. Assembled micro-controller firmwares (ESP32) for private smart home relays integration and environmental telemetry sensors monitoring.",
-    leadership: "Managed client expectations, gathered project specifications, and handled deployment schedules."
-  },
-  {
-    role: "Volunteer & Tech Lead",
-    company: "University Computer Society / Robotics Club",
+    role: "Owner & Lead Photographer",
+    company: "Rome Pixels Photography",
     period: "2024 — Present",
-    details: "Conducted monthly student bootcamps on hardware prototyping, gesture-based human-computer interfaces using OpenCV, and version control structures using Git/GitHub.",
-    leadership: "Orchestrated logistics and mentoring for 50+ participants in campus coding exhibitions."
+    details: "Managing client portfolios, lighting design, and creative capture settings for commercial and travel portrait projects."
+  },
+  {
+    role: "Technical Officer",
+    company: "Wishwin Education Center",
+    period: "2023 — Present",
+    details: "Maintaining LMS virtual environments, stream coordinations, student portal databases, and automated billing approvals."
+  },
+  {
+    role: "IT Intern (3 Months)",
+    company: "Sampath Bank Head Office (NSC Department)",
+    period: "2024",
+    details: "Supported network administration, configuration monitoring, and database management operations."
+  },
+  {
+    role: "Assistant Media Director",
+    company: "Industrial Management Science Student Association (IMSSA)",
+    period: "2026 Jan — Present",
+    details: "Leading content creation, photography grids, and event coverage highlights at the University of Kelaniya."
+  },
+  {
+    role: "Committee Member & Media Coordinator",
+    company: "Industrial Management Science Student Association (IMSSA)",
+    period: "2025 — 2026",
+    details: "Coordinated Level 01 media publications and departmental branding updates."
+  },
+  {
+    role: "Senior Member",
+    company: "Anandian Astronomical Association & Broadcasting Association",
+    period: "2010 — 2024",
+    details: "Led technical setups and event presentations during secondary school terms at Ananda College."
   }
 ];
 
 const certificationsAchievements = [
   {
     type: "Certification",
-    title: "Oracle Certified Associate, Java SE Programmer (OCAJP)",
-    issuer: "Oracle Corporation",
+    title: "Advanced Multimedia Web Design and Development Techniques",
+    issuer: "University of Colombo School of Computing (UCSC)",
     year: "2024",
-    extra: "Validates core Java MVC architectures, exception handling, and object-oriented algorithms."
+    extra: "Developed hands-on mastery over HTML, CSS, JavaScript, and MySQL for professional responsive web products.",
+    link: "https://www.linkedin.com/posts/thanushika-madhusith-6b3a37312_webdevelopment-html-css-activity-7436236897183739904-tym6"
   },
   {
     type: "Certification",
-    title: "AWS Certified Cloud Practitioner",
-    issuer: "Amazon Web Services (AWS)",
-    year: "2025",
-    extra: "Covers cloud infrastructure billing models, identity access management (IAM), and EC2 hosting zones."
+    title: "Business Analysis & Process Management Project",
+    issuer: "Coursera",
+    year: "2024",
+    extra: "Validated proficiency in requirement gathering, process mapping, and organizational analytics workflows."
   },
   {
     type: "Award",
-    title: "Winner — Best IoT / Hardware Project",
-    issuer: "SLIIT Tech Innovation Exhibition",
-    year: "2025",
-    extra: "Awarded for designing a millimeter-wave smart lighting relay hub capable of motionless presence detection."
+    title: "Silver Medalist — Sri Lankan Junior Astronomy Olympiad",
+    issuer: "IPS / Astronomy Associations",
+    year: "2017 & 2018",
+    extra: "Awarded consecutive national medals for excellence in physical science, cosmology, and observational theory."
   },
   {
-    type: "Competition",
-    title: "Finalist — National Algorithmic Hackathon",
-    issuer: "Sri Lanka Tech League",
-    year: "2024",
-    extra: "Competed against 80+ campus teams solving database concurrency and distributed scaling challenges."
+    type: "Award",
+    title: "2nd Place — All Island Inter School News Editing",
+    issuer: "“Samahara” News Editorial Awards",
+    year: "2023",
+    extra: "Recognized at a national level for outstanding news layout design, precision, and content composition."
   }
 ];
 
@@ -175,11 +191,6 @@ export default function Credentials() {
                 <p className="font-sans-body text-xs text-[#8C877C] leading-relaxed">
                   {exp.details}
                 </p>
-                {exp.leadership && (
-                  <div className="text-[10px] font-bold tracking-[0.1em] text-[#F4F1EA] border-l border-[#C9A876] pl-3 mt-1">
-                    Lshp: {exp.leadership}
-                  </div>
-                )}
               </div>
             ))}
           </div>
@@ -203,7 +214,13 @@ export default function Credentials() {
                   </span>
                 </div>
                 <h4 className="font-serif-display text-lg text-[#F4F1EA] group-hover:text-[#C9A876] transition-colors leading-tight font-medium font-sans-body">
-                  {item.title}
+                  {item.link ? (
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                      {item.title}
+                    </a>
+                  ) : (
+                    item.title
+                  )}
                 </h4>
                 <p className="font-sans-body text-xs text-[#8C877C] italic leading-normal">
                   {item.issuer}
