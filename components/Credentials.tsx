@@ -44,7 +44,10 @@ const experienceHistory = [
     company: "Sampath Bank Head Office (NSC Department)",
     period: "2024",
     details: "Supported network administration, configuration monitoring, and database management operations."
-  },
+  }
+];
+
+const leadershipHistory = [
   {
     role: "Assistant Media Director",
     company: "Industrial Management Science Student Association (IMSSA)",
@@ -140,12 +143,12 @@ export default function Credentials() {
           Education & Experience
         </h2>
 
-        {/* 3-Column Editorial Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        {/* 4-Column Editorial Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
           
           {/* Column 1: Academic History (Education) */}
-          <div className="lg:col-span-4 flex flex-col gap-8 w-full border-t border-[rgba(201,168,118,0.18)] pt-8">
-            <h3 className="font-serif-display text-xl text-[#C9A876] tracking-wider uppercase font-light mb-2">
+          <div className="lg:col-span-3 flex flex-col gap-8 w-full border-t border-[rgba(201,168,118,0.18)] pt-8">
+            <h3 className="font-serif-display text-base text-[#C9A876] tracking-wider uppercase font-light mb-2">
               01 / Academic History
             </h3>
             
@@ -173,10 +176,10 @@ export default function Credentials() {
             ))}
           </div>
 
-          {/* Column 2: Experience & Leadership */}
-          <div className="lg:col-span-4 flex flex-col gap-8 w-full border-t border-[rgba(201,168,118,0.18)] pt-8">
-            <h3 className="font-serif-display text-xl text-[#C9A876] tracking-wider uppercase font-light mb-2">
-              02 / Experience & Leadership
+          {/* Column 2: Working Experience */}
+          <div className="lg:col-span-3 flex flex-col gap-8 w-full border-t border-[rgba(201,168,118,0.18)] pt-8">
+            <h3 className="font-serif-display text-base text-[#C9A876] tracking-wider uppercase font-light mb-2">
+              02 / Working Experience
             </h3>
             
             {experienceHistory.map((exp, idx) => (
@@ -195,10 +198,32 @@ export default function Credentials() {
             ))}
           </div>
 
-          {/* Column 3: Certifications & Achievements */}
-          <div className="lg:col-span-4 flex flex-col gap-8 w-full border-t border-[rgba(201,168,118,0.18)] pt-8">
-            <h3 className="font-serif-display text-xl text-[#C9A876] tracking-wider uppercase font-light mb-2">
-              03 / Certs & Achievements
+          {/* Column 3: Leadership */}
+          <div className="lg:col-span-3 flex flex-col gap-8 w-full border-t border-[rgba(201,168,118,0.18)] pt-8">
+            <h3 className="font-serif-display text-base text-[#C9A876] tracking-wider uppercase font-light mb-2">
+              03 / Leadership
+            </h3>
+            
+            {leadershipHistory.map((lead, idx) => (
+              <div key={idx} className="credential-card flex flex-col gap-3 group">
+                <span className="font-mono text-[9px] text-[#8C877C] tracking-widest">{lead.period}</span>
+                <h4 className="font-serif-display text-lg text-[#F4F1EA] group-hover:text-[#C9A876] transition-colors leading-tight font-medium font-sans-body">
+                  {lead.role}
+                </h4>
+                <p className="font-sans-body text-xs text-[#C9A876] tracking-wider uppercase">
+                  {lead.company}
+                </p>
+                <p className="font-sans-body text-xs text-[#8C877C] leading-relaxed">
+                  {lead.details}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Column 4: Certifications & Achievements */}
+          <div className="lg:col-span-3 flex flex-col gap-8 w-full border-t border-[rgba(201,168,118,0.18)] pt-8">
+            <h3 className="font-serif-display text-base text-[#C9A876] tracking-wider uppercase font-light mb-2">
+              04 / Certs & Achievements
             </h3>
             
             {certificationsAchievements.map((item, idx) => (
