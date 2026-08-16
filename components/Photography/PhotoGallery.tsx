@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { Camera, Maximize2, X, Info, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -13,6 +14,7 @@ interface PhotoItem {
   settings: string;
   aspect: string; // Tailwind aspect-ratio class
   lightLeak: string; // Gradient color overlay representation
+  image: string;
 }
 
 const photoData: PhotoItem[] = [
@@ -25,46 +27,51 @@ const photoData: PhotoItem[] = [
     settings: "1/160s · f/2.0 · ISO 250",
     aspect: "aspect-[3/4]",
     lightLeak: "from-[rgba(201,168,118,0.12)] to-transparent",
+    image: "/images/Photo01.jpg",
   },
   {
     id: "photo-2",
     title: "Golden Hour Shimmer",
-    category: "Nature",
+    category: "Portraits",
     camera: "Canon EOS 90D",
     lens: "EF-S 18-135mm USM",
     settings: "1/400s · f/5.6 · ISO 100",
-    aspect: "aspect-square",
+    aspect: "aspect-[3/4]",
     lightLeak: "from-[rgba(232,217,188,0.15)] via-[rgba(201,168,118,0.05)] to-transparent",
+    image: "/images/Photo02.jpg",
   },
   {
     id: "photo-3",
-    title: "Velocity Lines",
-    category: "Automotive",
+    title: "Bridal Elegance",
+    category: "Portraits",
     camera: "Canon EOS 90D",
     lens: "EF 50mm f/1.8 STM",
     settings: "1/1000s · f/2.2 · ISO 200",
-    aspect: "aspect-[16/10]",
+    aspect: "aspect-[3/4]",
     lightLeak: "from-transparent to-[rgba(201,168,118,0.1)]",
+    image: "/images/Photo03.1.jpg",
   },
   {
     id: "photo-4",
-    title: "Midnight Rain Reflections",
-    category: "Street",
+    title: "Urban Moods & Rain Reflections",
+    category: "Portraits",
     camera: "Canon EOS 90D",
     lens: "EF 50mm f/1.8 STM",
     settings: "1/80s · f/1.8 · ISO 800",
     aspect: "aspect-[3/4]",
     lightLeak: "from-[rgba(201,168,118,0.06)] via-transparent to-[rgba(201,168,118,0.08)]",
+    image: "/images/Photo04.jpg",
   },
   {
     id: "photo-5",
-    title: "Prism Refractions",
-    category: "Creative",
+    title: "Creative Prism Expressions",
+    category: "Portraits",
     camera: "Canon EOS 90D",
     lens: "EF 50mm f/1.8 STM",
     settings: "1/200s · f/2.0 · ISO 320",
-    aspect: "aspect-square",
+    aspect: "aspect-[3/4]",
     lightLeak: "from-[rgba(201,168,118,0.2)] to-transparent",
+    image: "/images/Photo05.jpg",
   },
   {
     id: "photo-6",
@@ -75,10 +82,11 @@ const photoData: PhotoItem[] = [
     settings: "1/125s · f/4.0 · ISO 100",
     aspect: "aspect-[3/4]",
     lightLeak: "from-[rgba(232,217,188,0.08)] to-transparent",
+    image: "/images/Photo6.jpg",
   },
 ];
 
-const categories = ["ALL", "PORTRAITS", "NATURE", "AUTOMOTIVE", "STREET", "CREATIVE"];
+const categories = ["ALL", "PORTRAITS"];
 
 export default function PhotoGallery() {
   const [activeCategory, setActiveCategory] = useState("ALL");
@@ -393,8 +401,17 @@ export default function PhotoGallery() {
                 {/* Photo Frame Container */}
                 <div className={`relative w-full ${photo.aspect} bg-[#070605] overflow-hidden flex items-center justify-center`}>
                   
+                  {/* Actual Photo Image */}
+                  <Image
+                    src={photo.image}
+                    alt={photo.title}
+                    fill
+                    sizes="(max-width: 768px) 85vw, (max-width: 1024px) 35vw, 28vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+
                   {/* Light Leak simulation overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-tr ${photo.lightLeak} mix-blend-screen opacity-70 group-hover:opacity-90 transition-opacity duration-500`} />
+                  <div className={`absolute inset-0 bg-gradient-to-tr ${photo.lightLeak} mix-blend-screen opacity-70 group-hover:opacity-90 transition-opacity duration-500 pointer-events-none`} />
                   
                   {/* Focus Target / Brackets simulation overlay */}
                   <div className="absolute inset-4 border border-[rgba(201,168,118,0.05)] pointer-events-none group-hover:border-[rgba(201,168,118,0.12)] transition-colors duration-500">
@@ -403,7 +420,7 @@ export default function PhotoGallery() {
                   </div>
 
                   {/* Shutter reading indicator */}
-                  <span className="absolute bottom-3 left-3 font-mono text-[8px] text-[#8C877C] tracking-widest opacity-40 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="absolute bottom-3 left-3 font-mono text-[8px] text-[#8C877C] tracking-widest bg-[#0C0B0A]/70 px-1.5 py-0.5 border border-[rgba(201,168,118,0.1)] opacity-50 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                     {photo.settings}
                   </span>
 
@@ -522,9 +539,17 @@ export default function PhotoGallery() {
           >
             {/* Visual Frame */}
             <div className={`relative w-full md:w-3/5 ${selectedPhoto.aspect} bg-[#0C0B0A] overflow-hidden flex items-center justify-center border border-[rgba(201,168,118,0.06)] self-center`}>
-              <div className={`absolute inset-0 bg-gradient-to-tr ${selectedPhoto.lightLeak} mix-blend-screen opacity-85`} />
+              <Image
+                src={selectedPhoto.image}
+                alt={selectedPhoto.title}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 600px"
+                className="object-cover"
+              />
+              <div className={`absolute inset-0 bg-gradient-to-tr ${selectedPhoto.lightLeak} mix-blend-screen opacity-85 pointer-events-none`} />
               
-              <div className="absolute inset-8 border border-[rgba(201,168,118,0.04)]">
+              <div className="absolute inset-8 border border-[rgba(201,168,118,0.04)] pointer-events-none">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 border border-dashed border-[#C9A876]/20 rounded-full" />
               </div>
             </div>

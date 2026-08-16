@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { X, ArrowLeft, Cpu, Terminal, ShieldAlert, Award } from "lucide-react";
+import Image from "next/image";
 import gsap from "gsap";
 import { Project } from "@/lib/projects";
 
@@ -171,6 +172,28 @@ export default function ProjectCaseStudy({ project, onClose }: ProjectCaseStudyP
             </div>
           )}
         </div>
+
+        {/* Featured Image */}
+        {project.image && (
+          <div className="relative w-full aspect-video md:aspect-[21/9] border border-[rgba(201,168,118,0.15)] bg-[#0C0B0A] overflow-hidden select-none photo-glow-frame">
+            <Image
+              src={project.image}
+              alt={`${project.name} Featured Image`}
+              fill
+              priority
+              sizes="(max-width: 1200px) 100vw, 1100px"
+              className="object-cover"
+            />
+            {/* Subtle overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#15130F] via-transparent to-transparent opacity-40" />
+
+            {/* Corner highlights */}
+            <div className="absolute top-3 left-3 w-1.5 h-1.5 border-t border-l border-[#C9A876] opacity-65" />
+            <div className="absolute top-3 right-3 w-1.5 h-1.5 border-t border-r border-[#C9A876] opacity-65" />
+            <div className="absolute bottom-3 left-3 w-1.5 h-1.5 border-b border-l border-[#C9A876] opacity-65" />
+            <div className="absolute bottom-3 right-3 w-1.5 h-1.5 border-b border-r border-[#C9A876] opacity-65" />
+          </div>
+        )}
 
         {/* Grid: Overview & Metadata */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 border-t border-b border-[rgba(201,168,118,0.1)] py-8">

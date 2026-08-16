@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { projects, Project } from "@/lib/projects";
 import ProjectCaseStudy from "./ProjectCaseStudy";
@@ -120,8 +121,24 @@ export default function ProjectsGrid() {
   }, []);
 
   // Procedural visual layout mockups matching each project
-  const renderVisualMockup = (projectId: string) => {
-    switch (projectId) {
+  const renderVisualMockup = (project: Project) => {
+    if (project.image) {
+      return (
+        <div className="relative w-full h-full overflow-hidden border border-[rgba(201,168,118,0.15)] bg-[#0C0B0A] group/card photo-glow-frame">
+          <Image
+            src={project.image}
+            alt={`${project.name} Screenshot`}
+            fill
+            sizes="(max-width: 1024px) 100vw, 600px"
+            className="object-cover transition-transform duration-700 ease-out group-hover/card:scale-105"
+          />
+          {/* Subtle dark gradient overlay and vignette */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908]/80 via-transparent to-transparent opacity-60 transition-opacity duration-500 group-hover/card:opacity-40" />
+        </div>
+      );
+    }
+
+    switch (project.id) {
       case "neuromatch":
         return (
           <div className="relative w-full h-full flex flex-col justify-center gap-4 p-8 bg-[#15130F] font-mono text-[9px] text-[#8C877C] overflow-hidden select-none border border-[rgba(201,168,118,0.15)]">
@@ -460,7 +477,7 @@ export default function ProjectsGrid() {
                   }`}
                 >
                   <div className="visual-card-inner w-full h-full relative flex items-center justify-center p-3">
-                    {renderVisualMockup(project.id)}
+                    {renderVisualMockup(project)}
                     
                     {/* Decorative corner highlights */}
                     <div className="absolute top-3 left-3 w-1.5 h-1.5 border-t border-l border-[#C9A876] opacity-65" />
