@@ -102,7 +102,7 @@ export default function Nav() {
               ))}
             </nav>
             <a
-              href="/resume.pdf"
+              href="/My_Portfolio/resume.pdf"
               download="Thanushika_Madhusith_CV.pdf"
               className="flex items-center gap-2 px-4 py-2 border border-[#C9A876] text-[#C9A876] hover:bg-[#C9A876] hover:text-[#0A0908] text-[10px] font-bold tracking-[0.2em] font-sans-body transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-[#C9A876] group/nav-btn"
             >
@@ -143,7 +143,7 @@ export default function Nav() {
               </a>
             ))}
             <a
-              href="/resume.pdf"
+              href="/My_Portfolio/resume.pdf"
               download="Thanushika_Madhusith_CV.pdf"
               className="mobile-link mt-4 flex items-center gap-2 px-6 py-3 border border-[#C9A876] text-[#C9A876] hover:bg-[#C9A876] hover:text-[#0A0908] text-xs font-bold tracking-[0.2em] font-sans-body transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-[#C9A876] group/mob-btn"
             >

@@ -27,7 +27,7 @@ const photoData: PhotoItem[] = [
     settings: "1/160s · f/2.0 · ISO 250",
     aspect: "aspect-[3/4]",
     lightLeak: "from-[rgba(201,168,118,0.12)] to-transparent",
-    image: "/images/Photo01.jpg",
+    image: "/My_Portfolio/images/Photo01.jpg",
   },
   {
     id: "photo-2",
@@ -38,7 +38,7 @@ const photoData: PhotoItem[] = [
     settings: "1/400s · f/5.6 · ISO 100",
     aspect: "aspect-[3/4]",
     lightLeak: "from-[rgba(232,217,188,0.15)] via-[rgba(201,168,118,0.05)] to-transparent",
-    image: "/images/Photo02.jpg",
+    image: "/My_Portfolio/images/Photo02.jpg",
   },
   {
     id: "photo-3",
@@ -49,7 +49,7 @@ const photoData: PhotoItem[] = [
     settings: "1/1000s · f/2.2 · ISO 200",
     aspect: "aspect-[3/4]",
     lightLeak: "from-transparent to-[rgba(201,168,118,0.1)]",
-    image: "/images/Photo03.1.jpg",
+    image: "/My_Portfolio/images/Photo03.1.jpg",
   },
   {
     id: "photo-4",
@@ -60,7 +60,7 @@ const photoData: PhotoItem[] = [
     settings: "1/80s · f/1.8 · ISO 800",
     aspect: "aspect-[3/4]",
     lightLeak: "from-[rgba(201,168,118,0.06)] via-transparent to-[rgba(201,168,118,0.08)]",
-    image: "/images/Photo04.jpg",
+    image: "/My_Portfolio/images/Photo04.jpg",
   },
   {
     id: "photo-5",
@@ -71,7 +71,7 @@ const photoData: PhotoItem[] = [
     settings: "1/200s · f/2.0 · ISO 320",
     aspect: "aspect-[3/4]",
     lightLeak: "from-[rgba(201,168,118,0.2)] to-transparent",
-    image: "/images/Photo05.jpg",
+    image: "/My_Portfolio/images/Photo05.jpg",
   },
   {
     id: "photo-6",
@@ -82,7 +82,7 @@ const photoData: PhotoItem[] = [
     settings: "1/125s · f/4.0 · ISO 100",
     aspect: "aspect-[3/4]",
     lightLeak: "from-[rgba(232,217,188,0.08)] to-transparent",
-    image: "/images/Photo6.jpg",
+    image: "/My_Portfolio/images/Photo6.jpg",
   },
 ];
 

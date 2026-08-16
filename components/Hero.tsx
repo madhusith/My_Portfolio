@@ -231,7 +231,7 @@ export default function Hero() {
               {/* Processed Portrait Image */}
               <Image
                 ref={portraitRef}
-                src="/images/portrait.png"
+                src="/My_Portfolio/images/portrait.png"
                 alt="Thanushika Madhusith Portrait"
                 fill
                 priority

@@ -261,7 +261,7 @@ export default function Credentials() {
         {/* Download CV CTA Row */}
         <div className="mt-20 border-t border-[rgba(201,168,118,0.15)] pt-12 flex justify-center w-full">
           <a
-            href="/resume.pdf"
+            href="/My_Portfolio/resume.pdf"
             download="Thanushika_Madhusith_CV.pdf"
             className="flex items-center gap-3 px-8 py-4 border border-[#C9A876] text-[#C9A876] hover:bg-[#C9A876] hover:text-[#0A0908] text-xs font-bold tracking-[0.25em] font-sans-body transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-[#C9A876] group/btn"
           >
