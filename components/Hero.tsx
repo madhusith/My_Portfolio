@@ -34,7 +34,6 @@ export default function Hero() {
   const ctasRef = useRef<HTMLDivElement>(null);
   const portraitContainerRef = useRef<HTMLDivElement>(null);
   const portraitRef = useRef<HTMLImageElement>(null);
-  const lensRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -107,14 +106,6 @@ export default function Hero() {
           end: "bottom top",
           scrub: true,
         },
-      });
-
-      // Subtle rotation on lens graphic
-      gsap.to(lensRef.current, {
-        rotate: 45,
-        duration: 20,
-        repeat: -1,
-        ease: "none",
       });
     });
 
@@ -230,7 +221,7 @@ export default function Hero() {
         <div className="lg:col-span-5 flex justify-center lg:justify-end">
           <div
             ref={portraitContainerRef}
-            className="relative w-full max-w-[420px] aspect-[3/4] border border-[rgba(201,168,118,0.15)] bg-[#15130F] p-4 group select-none overflow-hidden"
+            className="relative w-full max-w-[420px] aspect-[3/4] border border-[rgba(201,168,118,0.15)] bg-[#15130F] p-4 group select-none overflow-hidden photo-glow-frame"
           >
             {/* Ambient gold glow behind the frame */}
             <div className="absolute inset-0 bg-gradient-to-t from-[rgba(201,168,118,0.04)] to-transparent pointer-events-none" />
@@ -248,26 +239,6 @@ export default function Hero() {
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-102"
                 style={{ filter: "grayscale(100%) contrast(90%)" }}
               />
-
-              {/* SVG Camera Lens Shutter Graphic representing the Photographer facet */}
-              <div
-                ref={lensRef}
-                className="absolute w-[80%] aspect-square opacity-10 border border-dashed border-[#C9A876] rounded-full flex items-center justify-center p-6 z-0"
-              >
-                <div className="w-full h-full border border-[#C9A876] rounded-full flex items-center justify-center relative">
-                  {/* Aperture Shutter Blades Simulation */}
-                  <svg className="w-full h-full text-[#C9A876]" viewBox="0 0 100 100" fill="none">
-                    <line x1="50" y1="0" x2="15" y2="85" stroke="currentColor" strokeWidth="0.5" />
-                    <line x1="15" y1="85" x2="90" y2="65" stroke="currentColor" strokeWidth="0.5" />
-                    <line x1="90" y1="65" x2="50" y2="0" stroke="currentColor" strokeWidth="0.5" />
-                    <circle cx="50" cy="50" r="10" stroke="currentColor" strokeWidth="0.5" />
-                  </svg>
-                </div>
-              </div>
-
-              {/* Central focal point */}
-              <div className="absolute w-2 h-2 bg-[#C9A876] rounded-full opacity-60 animate-ping z-10" />
-              <div className="absolute w-1 h-1 bg-[#C9A876] rounded-full opacity-80 z-10" />
 
               {/* Decorative HUD ticks and lens readings */}
               <div className="absolute top-4 left-4 font-sans-body text-[8px] text-[#F4F1EA] tracking-widest z-10 drop-shadow-md">

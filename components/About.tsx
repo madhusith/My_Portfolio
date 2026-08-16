@@ -40,13 +40,13 @@ export default function About() {
       className="relative min-h-screen w-full flex items-center justify-center py-24 px-6 md:px-12 bg-[#15130F] border-t border-b border-[rgba(201,168,118,0.08)]"
     >
       <div ref={elementsRef} className="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        
+
         {/* Left Column: Heading & Detailed Bio */}
         <div className="lg:col-span-6 flex flex-col justify-start">
           <div className="scroll-reveal text-[11px] font-bold tracking-[0.3em] text-[#C9A876] uppercase mb-4 font-sans-body">
             A LITTLE ABOUT ME
           </div>
-          
+
           <h2 className="scroll-reveal font-serif-display text-[clamp(2.2rem,5vw,3.5rem)] font-light text-[#F4F1EA] leading-tight mb-8">
             Where Technology meets Visual Creativity.
           </h2>
@@ -54,9 +54,9 @@ export default function About() {
           <div className="scroll-reveal w-20 h-[1px] bg-[#C9A876] mb-8" />
 
           <p className="scroll-reveal font-sans-body text-base md:text-lg text-[#8C877C] leading-relaxed mb-6">
-            Thanushika is a BSc (Hons) IT student from Sri Lanka with a strong interest in software development, artificial intelligence, IoT, automation, interactive interfaces, and creative technology.
+            Thanushika is a BSc (Hons) IT student from Sri Lanka with a strong interest in software development, artificial intelligence, IoT, automation, automotive industry, interactive interfaces, and creative technology.
           </p>
-          
+
           <p className="scroll-reveal font-sans-body text-base text-[#8C877C] leading-relaxed">
             He also works with photography, allowing technology and visual creativity to exist side by side — one discipline sharpening the other. He combines analytical systems development with the creative eye required for cinematic photography.
           </p>
@@ -64,7 +64,7 @@ export default function About() {
 
         {/* Right Column: Three Themes Grid with Gold Dividers */}
         <div className="lg:col-span-6 flex flex-col gap-8 w-full">
-          
+
           {/* Theme 1: Technology */}
           <div className="scroll-reveal border-t border-[rgba(201,168,118,0.18)] pt-6 flex flex-col md:flex-row gap-4 justify-between items-start">
             <div className="w-6 font-serif-display text-[#C9A876] text-xl font-light">I</div>
@@ -101,7 +101,7 @@ export default function About() {
         </div>
 
       </div>
-      
+
       {/* Centered bottom flow line linking to next section */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1px] h-24 bg-gradient-to-t from-[rgba(201,168,118,0.4)] to-transparent pointer-events-none hidden lg:block z-10" />
     </section>
