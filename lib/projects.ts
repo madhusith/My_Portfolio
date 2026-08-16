@@ -10,33 +10,35 @@ export interface Project {
   problem: string;
   solution: string;
   outcome: string;
+  githubUrl?: string;
+  liveUrl?: string;
 }
 
 export const projects: Project[] = [
   {
-    id: "valuflow",
+    id: "saloonshyani",
     number: "01",
-    name: "ValuFlow SL",
-    category: "DIGITAL WORKFLOW · GOVERNMENT SYSTEM",
-    tagline: "A task and workflow platform digitizing paper-based government valuation workflows.",
-    description: "Built for the Department of Valuation in Sri Lanka to transition legacy paper operations to a modern web-based tracking and automated workflow assignment environment.",
-    stack: ["React", "Node.js", "PostgreSQL", "Prisma", "Socket.IO", "Redis", "LangChain", "Azure OpenAI"],
+    name: "Saloon Shyani",
+    category: "WEB APP · CUSTOM CRM · ONGOING",
+    tagline: "Customized dashboard system for salon scheduling and operation records.",
+    description: "A tailored business manager portal for Saloon Shyani, handling bookings, stylist schedules, and client treatment histories.",
+    stack: ["React", "CSS3", "Node.js", "Express.js", "MySQL"],
     features: [
-      "Role-based workflows with dynamic authorization levels",
-      "Kanban boards for real-time task movement tracking",
-      "Live status sync using Socket.IO",
-      "AI-powered valuation file summarization",
-      "Intelligent workflow scheduling assistance using OpenAI model integration"
+      "Stylist shift calendar mapping daily availability",
+      "Client profile registry logging past styles and treatments",
+      "Service category price calculators and invoice builders",
+      "Direct dashboard overview of weekly service revenues"
     ],
-    problem: "The legacy workflow relied entirely on moving paper files between regional appraisers, supervisors, and administrative officers. This resulted in delayed valuations, missing files, and complete lack of central progress visibility.",
-    solution: "We designed a robust Web-based Workflow Management System with custom Kanban pipelines. Every physical file is assigned a digital twin with role-based routing, real-time Socket.IO notifications, and an AI summarization engine to instantly recap multi-page valuation arguments.",
-    outcome: "Reduced evaluation turnaround time by 60%, completely eliminated missing file incidents, and provided regional management with real-time process bottlenecks dashboards."
+    problem: "Saloon Shyani required a highly customized booking and registry dashboard aligned with their physical salon layouts and staff structures that standard booking systems couldn't accommodate.",
+    solution: "Developing a custom Web UI using React for managing staff schedules, service rates, and client visits, backed by a Node.js REST API.",
+    outcome: "Ongoing development; currently in internal client review and feedback loops.",
+    githubUrl: "https://github.com/madhusith/Saloon-System"
   },
   {
     id: "wishwin",
     number: "02",
     name: "Wishwin LMS",
-    category: "EDTECH · LMS",
+    category: "EDTECH · LMS · ONGOING",
     tagline: "A gamified virtual learning management system for regional tuition students.",
     description: "An educational platform designed for live streaming, recorded classes, and automatic quizzes, customized with voice integration and AI-guided learning analysis.",
     stack: ["React", "Node.js", "Express", "MySQL", "PayHere", "OBS", "AI Assistance"],
@@ -54,93 +56,114 @@ export const projects: Project[] = [
   {
     id: "jarvis",
     number: "03",
-    name: "Jarvis AI Assistant",
-    category: "AI · COMPUTER VISION · HCI",
-    tagline: "Gesture-based human-computer interaction utilizing computer vision pipelines.",
-    description: "A Python application allowing users to control desktop cursor, clicks, and media controls hands-free using computer vision gesture detection.",
+    name: "Javis AI Assistant",
+    category: "AI · COMPUTER VISION · HCI · HALF DONE",
+    tagline: "Gesture-based desktop automation system using computer vision.",
+    description: "A Python automation assistant tracking hand pose land-markers via MediaPipe to control computer systems hands-free.",
     stack: ["Python", "OpenCV", "MediaPipe", "macOS System Integration"],
     features: [
-      "High-precision hand landmark tracking via MediaPipe",
-      "Pinch-to-click, double-click, and drag gesture triggers",
-      "Virtual hand-pose keyboard overlays for touch-free writing",
-      "Volume, media playback, and desktop navigation gestures",
-      "Sci-fi inspired HUD graphics rendering active canvas boundaries"
+      "Real-time finger tracking coordinate calculations",
+      "Pinch, drag, double-click, and media toggle triggers",
+      "Sci-fi custom display canvas HUD indicators",
+      "Gesture keyboard overlays for virtual typing input"
     ],
-    problem: "Standard touchless interfaces are either sluggish, require expensive specialized depth sensors, or fail to operate reliably in low-light environments using standard webcams.",
-    solution: "We implemented an optimized computer vision pipeline. Using MediaPipe, hand landmarks are processed at 60 FPS, passing coordinates through custom mathematical thresholds to filter hand-shakes, mapping clicks and smooth scrolling directly to macOS native events.",
-    outcome: "Built a fully functional touchless control interface that works on standard laptop webcams with less than 3% CPU overhead, proving useful for hygienic/clean-room computing environments."
-  },
-  {
-    id: "smartbulb",
-    number: "04",
-    name: "Smart Bulb Holder",
-    category: "IOT · SMART HOME",
-    tagline: "Smart lightning node featuring presence detection and scheduling.",
-    description: "An ESP32-based hardware project tracking occupant presence using millimeter-wave sensors to automate home light sockets.",
-    stack: ["ESP32", "LD2410C mmWave Sensor", "MOSFET Control", "C++", "MQTT"],
-    features: [
-      "Millimeter-wave micro-motion sensing (detects breathing/still presence)",
-      "Dynamic zone lighting maps and customizable schedules",
-      "WiFi-based mobile application controls and MQTT sync",
-      "Mosquito-repellent pulse frequency simulation control",
-      "Multi-user device sharing with secure credentials validation"
-    ],
-    problem: "Standard PIR motion sensors only trigger on large movements, leaving users in the dark when they sit still (e.g. reading, working) unless they wave their hands periodically.",
-    solution: "Built a custom IoT hardware node utilizing the LD2410C millimeter-wave radar sensor connected to an ESP32. By reading raw distance signal-to-noise ratios, the device maintains presence detection even when the occupant is completely motionless, driving power relays silently.",
-    outcome: "Achieved zero-error light automation that stays active as long as a person is physically in the room, dropping standby electrical consumption by 18%."
+    problem: "Touchless computer controls often require complex depth cameras or exhibit excessive lag on standard device webcams.",
+    solution: "Built a lightweight gesture tracking thread using MediaPipe pipeline, passing tracking results through dynamic smoothing equations to prevent jitter before firing OS signals.",
+    outcome: "Currently half-completed. The basic mouse movement, cursor control, and gesture clicks are fully functional under minimal CPU overhead.",
+    githubUrl: "https://github.com/madhusith/JAVIS_handGesture"
   },
   {
     id: "teafactory",
-    number: "05",
-    name: "Tea Factory Automation",
-    category: "INDUSTRIAL IOT · AUTOMATION",
-    tagline: "Real-time industrial IoT monitoring system for black tea manufacturing.",
-    description: "An industrial sensor array prototype tracking temperature, humidity, and leaf drying parameters during the tea oxidation and processing cycles.",
-    stack: ["ESP8266", "DHT22 Sensors", "InfluxDB", "Grafana", "Node-RED"],
+    number: "04",
+    name: "IoT: Tea Factory Withering Automation",
+    category: "IOT · INDUSTRIAL AUTOMATION · ONGOING",
+    tagline: "Automation concept designed to optimize black tea leaf-withering.",
+    description: "An industrial IoT monitoring and optimization concept utilizing sensor arrays and real-time environmental controls to manage moisture drying.",
+    stack: ["ESP32 / ESP8266", "DHT22 Sensors", "Ambient Control Probes", "MQTT", "Node-RED"],
     features: [
-      "Multi-point industrial humidity and ambient temperature probes",
-      "Real-time Grafana dashboards mapping manufacturing zone statuses",
-      "Automatic threshold alerts via Node-RED notifications",
-      "Historical data warehousing for tea crop batch analysis"
+      "Multi-point temperature and humidity leaf bed probes",
+      "MQTT protocol data transport to dashboard coordinator",
+      "Intelligent fan speed adjustment triggers based on humidity",
+      "Historical drying stats storage for batch quality audits"
     ],
-    problem: "Consistent quality in black tea processing requires strict temperature and humidity parameters during withering and oxidation. Manual periodic measurements led to ruined tea batches due to unnoticed fluctuations.",
-    solution: "Deployed a local mesh of sensor nodes reading withering trough parameters, feeding data over MQTT into a localized database. This feeds real-time monitors in the factory floor, ringing physical alarms if limits are crossed.",
-    outcome: "Successfully prototyped an automated microclimate monitor that lowered batch failures by 90% in testing runs, preserving consistent tea leaf processing metrics."
+    problem: "Consistent quality in black tea processing requires strict temperature and humidity parameters during withering. Manual measurements led to ruined tea batches due to unnoticed fluctuations.",
+    solution: "Designed a localized sensor grid using ESP32 nodes to feed real-time climate data to an automation controller that regulates ventilation.",
+    outcome: "Ongoing concept design and planning; under active discussion to define hardware constraints and physical system integrations."
   },
   {
-    id: "tnbookstore",
-    number: "06",
-    name: "TN Book Store ERP",
-    category: "DESKTOP SOFTWARE · ERP",
-    tagline: "Cross-platform enterprise inventory and sales management system.",
-    description: "An Electron-based desktop application managing high-throughput retail bookstore inventory, sales receipts, and analytics.",
-    stack: ["Electron", "React", "Node.js", "MySQL", "Tailwind CSS"],
+    id: "bookshoperp",
+    number: "05",
+    name: "BookShop ERP System",
+    category: "ELECTRON · DESKTOP SOFTWARE · DATABASE",
+    tagline: "Cross-platform desktop application for bookstore sales and catalog ERP.",
+    description: "An enterprise POS and inventory catalog dashboard designed for book publishers, built using Electron, React, Node.js, and MySQL.",
+    stack: ["React.js", "Node.js", "Express.js", "MySQL", "Electron"],
     features: [
-      "Fast local inventory search indexing tens of thousands of books",
-      "Point of Sale (POS) invoicing system with printable barcode support",
-      "Daily/monthly profit graphs and sales dashboards",
-      "Automated stock level warnings for reordering popular textbooks"
+      "High-speed local catalog search indexing thousands of entries",
+      "Interactive checkout POS supporting printable paper invoices",
+      "Analytics dashboard rendering profit, sales, and categories charts",
+      "Low-stock reorder thresholds with alert triggers"
     ],
-    problem: "Bookstores manage massive, multi-category inventory lists that make web-only software slow and dependent on active internet. Legacy desktop solutions were expensive and visually dated.",
-    solution: "We packaged a React frontend inside an Electron application, directly linking to a local SQLite/MySQL engine. This guarantees high-speed searches, offline checkout operations, and automated periodic database backups.",
-    outcome: "Delivered a lightweight POS software managing over 12,000 active SKU items, running offline checkouts in less than 200ms per transaction."
+    problem: "Bespoke retail booksellers manage huge catalogs that make standard web applications slow, particularly during high-volume offline periods.",
+    solution: "Built an Electron desktop application wrapper hosting a React user interface connected to a local Node.js server. The application communicates with MySQL to guarantee low latencies.",
+    outcome: "Delivered a standalone POS software running offline checkouts under 200ms and organizing over 12,000 active SKU items.",
+    githubUrl: "https://github.com/madhusith/bookshop-erp-pro"
+  },
+  {
+    id: "vipluxurysaloon",
+    number: "06",
+    name: "The VIP Luxury Saloon Booking System",
+    category: "WEB APPLICATION · SCHEDULING · SERVERLESS",
+    tagline: "An elegant, real-time online reservation platform for salon clients.",
+    description: "A client reservation web application utilizing HTML5, CSS3, Vanilla JS, and Firebase Realtime Database to automate stylist scheduling and services booking.",
+    stack: ["HTML5", "CSS3", "Vanilla JavaScript", "Firebase"],
+    features: [
+      "Real-time reservation calendar synchronized dynamically",
+      "Auto-clash detection for beauticians and time slots",
+      "Stylists profile dashboard and service menu calculators",
+      "Responsive, elegant mobile-first booking interface"
+    ],
+    problem: "Manual phone reservations and spreadsheet bookings frequently created overlaps and schedule double-bookings, confusing coordinators and customers.",
+    solution: "Created a responsive vanilla client connecting directly to Firebase. Read/write operations use database rules to enforce appointment constraints, locking slots instantly.",
+    outcome: "Launched live at vip-luxury-saloon.web.app, successfully organizing customer bookings and eliminating schedule conflicts.",
+    liveUrl: "https://vip-luxury-saloon.web.app/"
+  },
+  {
+    id: "neuromatch",
+    number: "07",
+    name: "Neuro Match Game",
+    category: "C++ · GAME DEVELOPMENT",
+    tagline: "A classic memory and matching card game built natively in C++.",
+    description: "A high-performance command-line based puzzle game designed to test cognitive matching and memory speed, written from scratch in C++.",
+    stack: ["C++", "STL", "Console Graphics", "Data Structures"],
+    features: [
+      "Interactive grid size configuration",
+      "Real-time flip and match calculations",
+      "Latency and accuracy statistics logging",
+      "Optimized standard output buffer management"
+    ],
+    problem: "Console games in C++ often suffer from poorly structured game loops, messy state updates, or bad visual spacing on different terminal widths.",
+    solution: "Built a discrete State Machine controlling game states (Menu, Gameplay, Evaluation, Leaderboard) coupled with clear screen buffering and standard library containers (vector, map) for inventory management.",
+    outcome: "Produced a lightweight, zero-dependency native command-line game that processes player matching actions and computes statistics with sub-millisecond latencies.",
+    githubUrl: "https://github.com/madhusith/Neuro-Match"
   },
   {
     id: "clothingwarehouse",
-    number: "07",
-    name: "Clothing Warehouse ERP",
-    category: "JAVA · DATABASE · MANAGEMENT SYSTEM",
-    tagline: "Relational database management application for textile warehousing.",
-    description: "A desktop system written in Java utilizing relational databases to manage shipping, stocking, and textile vendor records.",
+    number: "08",
+    name: "Clothing Warehouse Management System",
+    category: "JAVA · DESKTOP SOFTWARE · DATABASE",
+    tagline: "A desktop enterprise database application managing clothing stock and supplier records.",
+    description: "A textile inventory management system built with Java Swing and MySQL, allowing multi-role stock tracking, automated ledger logs, and billing reports.",
     stack: ["Java", "Java Swing", "JDBC", "MySQL"],
     features: [
-      "Textile material category indexing and colorway stock counts",
-      "Supplier ledger balances tracking and invoice associations",
-      "Optimized SQL procedures managing stock reservation for shipments",
-      "Pre-formatted PDF summary reporting for inventory counts"
+      "Textile material category indexing and fabric batch counts",
+      "Supplier ledger and payment transaction records",
+      "Optimized transaction triggers protecting concurrent reserves",
+      "Automatic PDF ledger sheet generation"
     ],
-    problem: "Textile warehouses require detailed breakdowns of fabric types, colors, dye batches, and suppliers. Basic general ERP systems were too generic and hard to configure.",
-    solution: "Designed a tailored Java Swing client connecting via JDBC to an optimized MySQL schema. Set up database triggers to prevent double-booking of physical batches and automate reorder alerts directly to vendor records.",
-    outcome: "Stabilized inventory allocation timelines, allowing the operations team to prepare supplier invoices and packing checklists in seconds."
+    problem: "Textile warehouses require detailed fabric category and supplier ledger tracking, which standard generic software fails to represent without massive configuration.",
+    solution: "Designed a custom Java Swing desktop frontend that runs queries via JDBC against a highly normalized MySQL database schema with transaction controls.",
+    outcome: "Slashed shipment planning time, preventing double-allocations and digitizing inventory records across physical warehouse aisles.",
+    githubUrl: "https://github.com/madhusith/Clothing-Warehouse-Management-"
   }
 ];

@@ -122,36 +122,132 @@ export default function ProjectsGrid() {
   // Procedural visual layout mockups matching each project
   const renderVisualMockup = (projectId: string) => {
     switch (projectId) {
-      case "valuflow":
+      case "neuromatch":
         return (
           <div className="relative w-full h-full flex flex-col justify-center gap-4 p-8 bg-[#15130F] font-mono text-[9px] text-[#8C877C] overflow-hidden select-none border border-[rgba(201,168,118,0.15)]">
             <div className="text-[#C9A876] font-bold border-b border-[rgba(201,168,118,0.15)] pb-2 flex items-center justify-between">
-              <span>WORKFLOW ENGINE V1.0</span>
-              <span className="animate-pulse text-green-500 font-sans text-[7px]">&bull; ACTIVE</span>
+              <span>NEURO MATCH ENGINE v1.2</span>
+              <span className="text-green-500 font-sans text-[7px]">&bull; COMPILED NATIVE</span>
             </div>
             
-            <div className="flex gap-4 items-center">
-              <div className="p-2 border border-[#C9A876] w-24 text-center text-[#F4F1EA]">INCOMING FILE</div>
-              <div className="text-xl text-[#C9A876]">&rarr;</div>
-              <div className="p-2 border border-[#C9A876]/40 w-24 text-center">AI SCAN</div>
-              <div className="text-xl text-[#C9A876]">&rarr;</div>
-              <div className="p-2 border border-[#C9A876]/40 w-24 text-center">AUTO ROUTE</div>
+            <div className="grid grid-cols-4 gap-2 w-fit mx-auto my-2">
+              {["[A]", "[B]", "[?]", "[A]", "[?]", "[C]", "[B]", "[?]", "[C]", "[?]", "[?]", "[?]"].map((card, i) => {
+                const isMatched = card === "[A]" || card === "[B]" || card === "[C]";
+                return (
+                  <div
+                    key={i}
+                    className={`w-10 h-8 border flex items-center justify-center text-[10px] font-bold transition-all duration-300 ${
+                      isMatched
+                        ? "border-[#C9A876] bg-[#C9A876]/10 text-[#C9A876] shadow-[0_0_8px_rgba(201,168,118,0.1)]"
+                        : "border-[#8C877C]/30 text-[#8C877C]/40"
+                    }`}
+                  >
+                    {card}
+                  </div>
+                );
+              })}
             </div>
             
-            <div className="flex flex-col gap-2 mt-4">
-              <div className="w-full bg-[rgba(201,168,118,0.06)] p-2 border-l border-[#C9A876] text-xxs leading-relaxed">
-                <span className="text-[#C9A876]">LANGCHAIN RUN:</span> Valuation doc summarized. Confidence: 94%. Appraiser assigned: R048-Colombo. Status: Queue.
+            <div className="flex justify-between items-center text-[7px] border-t border-[rgba(201,168,118,0.1)] pt-2 mt-2">
+              <span>Moves: 14</span>
+              <span className="text-[#C9A876]">Accuracy: 84.6%</span>
+              <span>Latency: 284ms</span>
+            </div>
+          </div>
+        );
+      case "clothingwarehouse":
+        return (
+          <div className="relative w-full h-full flex flex-col justify-between p-8 bg-[#15130F] font-mono text-[9px] text-[#8C877C] overflow-hidden select-none border border-[rgba(201,168,118,0.15)]">
+            <div className="text-[#C9A876] font-bold border-b border-[rgba(201,168,118,0.15)] pb-2 flex items-center justify-between">
+              <span>WAREHOUSE TRANSACTION MANAGER</span>
+              <span className="text-blue-400 font-sans text-[7px]">&bull; JDBC CONNECTED</span>
+            </div>
+            
+            <div className="flex flex-col gap-2 my-2">
+              <div className="flex justify-between items-center bg-[#1E1B15] p-2 border-l-2 border-[#C9A876] text-xxs">
+                <span>TXT-LINEN-BLU-42</span>
+                <span className="text-[#F4F1EA] font-bold">1,250 YARDS</span>
+                <span className="text-green-500/80 font-bold">IN STOCK</span>
               </div>
-              <div className="w-fit border border-green-500/20 text-green-500/60 px-2 py-0.5 text-[8px]">
-                SOCKETS: 12 clients connected
+              <div className="flex justify-between items-center bg-[#1E1B15]/50 p-2 border-l-2 border-[#8C877C]/30 text-xxs">
+                <span>TXT-COTTON-RED-08</span>
+                <span className="text-[#8C877C] font-bold">340 YARDS</span>
+                <span className="text-amber-500/80 font-bold">LOW STOCK</span>
               </div>
+            </div>
+            
+            <div className="flex justify-between items-center text-[7px] border-t border-[rgba(201,168,118,0.1)] pt-2 mt-2">
+              <span>Active Suppliers: 12</span>
+              <span>DB Status: MySQL Stable</span>
+              <span className="text-[#C9A876]">PDF Report Ready</span>
+            </div>
+          </div>
+        );
+      case "bookshoperp":
+        return (
+          <div className="relative w-full h-full flex flex-col justify-between p-8 bg-[#15130F] font-mono text-[9px] text-[#8C877C] overflow-hidden select-none border border-[rgba(201,168,118,0.15)]">
+            <div className="text-[#C9A876] font-bold border-b border-[rgba(201,168,118,0.15)] pb-2 flex items-center justify-between">
+              <span>BOOKSHOP ERP // POINT OF SALE</span>
+              <span className="text-green-400 font-sans text-[7px]">&bull; ELECTRON APPLIANCE</span>
+            </div>
+            
+            <div className="flex gap-4 items-center my-3">
+              <div className="flex-1 border border-[rgba(201,168,118,0.15)] p-2 bg-[#0C0B0A]">
+                <div className="text-[7px] text-[#8C877C] uppercase">Active Invoice</div>
+                <div className="text-[#F4F1EA] font-bold text-[10px] mt-1">$142.50</div>
+                <div className="text-[6px] text-green-500/60 mt-0.5">3 Items Pending Print</div>
+              </div>
+              <div className="w-16 h-8 border border-[#C9A876]/40 flex flex-col justify-center items-center gap-0.5 bg-[#1E1B15] text-[7px] text-[#C9A876] font-bold">
+                <span className="leading-none">|||| |||| |</span>
+                <span>BARCODE</span>
+              </div>
+            </div>
+            
+            <div className="flex justify-between items-center text-[7px] border-t border-[rgba(201,168,118,0.1)] pt-2 mt-1">
+              <span>Catalog: 12,450 SKUs</span>
+              <span className="text-[#C9A876]">Sync: Local MySQL</span>
+            </div>
+          </div>
+        );
+      case "vipluxurysaloon":
+        return (
+          <div className="relative w-full h-full flex flex-col justify-between p-8 bg-[#15130F] font-mono text-[9px] text-[#8C877C] overflow-hidden select-none border border-[rgba(201,168,118,0.15)]">
+            <div className="text-[#C9A876] font-bold border-b border-[rgba(201,168,118,0.15)] pb-2 flex items-center justify-between">
+              <span>VIP LUXURY SALOON PORTAL</span>
+              <span className="text-[#C9A876] font-sans text-[7px]">&bull; LIVE CLIENT</span>
+            </div>
+            
+            <div className="flex flex-col gap-1.5 my-3">
+              <div className="text-[8px] uppercase tracking-wider text-[#E8D9BC]">Reservation Calendar</div>
+              <div className="grid grid-cols-5 gap-1.5 text-center">
+                {["09:00", "11:00", "13:00", "15:00", "17:00"].map((time, i) => {
+                  const isBooked = i === 1 || i === 3;
+                  return (
+                    <div
+                      key={time}
+                      className={`py-1 border text-[7px] transition-all duration-300 ${
+                        isBooked
+                          ? "border-[#C9A876] bg-[#C9A876] text-[#0A0908] font-bold"
+                          : "border-[#8C877C]/20 text-[#8C877C]/60"
+                      }`}
+                    >
+                      {time}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            
+            <div className="flex justify-between items-center text-[7px] border-t border-[rgba(201,168,118,0.1)] pt-2 mt-1">
+              <span>Database: Firebase Realtime</span>
+              <span className="text-green-500 font-bold">100% Slot Sync</span>
             </div>
           </div>
         );
       case "wishwin":
         return (
-          <div className="relative w-full h-full flex flex-col justify-between p-8 bg-[#15130F] overflow-hidden select-none border border-[rgba(201,168,118,0.15)]">
-            <div className="flex justify-between items-center text-[9px] text-[#8C877C] font-mono">
+          <div className="relative w-full h-full flex flex-col justify-between p-8 bg-[#15130F] overflow-hidden select-none border border-[rgba(201,168,118,0.15)] font-mono text-[9px] text-[#8C877C]">
+            <div className="flex justify-between items-center">
               <span className="text-[#C9A876]">WISHWIN LMS v2</span>
               <span>LIVE: PHYSICS GRADE 13</span>
             </div>
@@ -170,9 +266,36 @@ export default function ProjectsGrid() {
               </div>
             </div>
 
-            <div className="flex justify-between items-center text-[9px] font-mono text-[#8C877C]">
+            <div className="flex justify-between items-center font-mono text-[#8C877C] text-[7px]">
               <span>Gamification: Level 14</span>
               <span className="text-green-500/60 font-bold">Weak Area Alert: Optics</span>
+            </div>
+          </div>
+        );
+      case "saloonshyani":
+        return (
+          <div className="relative w-full h-full flex flex-col justify-between p-8 bg-[#15130F] font-mono text-[9px] text-[#8C877C] overflow-hidden select-none border border-[rgba(201,168,118,0.15)]">
+            <div className="text-[#C9A876] font-bold border-b border-[rgba(201,168,118,0.15)] pb-2 flex items-center justify-between">
+              <span>SALOON SHYANI // STAFF MANAGER</span>
+              <span className="text-amber-500 font-sans text-[7px]">&bull; DEV PIPELINE</span>
+            </div>
+            
+            <div className="flex flex-col gap-2 my-2 text-[8px]">
+              <div className="flex justify-between items-center bg-[#1E1B15] p-2 border-l border-amber-500/50">
+                <span>Stylist: Shyani D.</span>
+                <span className="text-[#C9A876]">09:00 AM - 06:00 PM</span>
+                <span className="text-green-500 font-bold">ON SHIFT</span>
+              </div>
+              <div className="flex justify-between items-center bg-[#1E1B15] p-2 border-l border-[#8C877C]/30">
+                <span>Stylist: Nimali K.</span>
+                <span className="text-[#8C877C]">12:00 PM - 08:00 PM</span>
+                <span className="text-[#8C877C]/60">PENDING</span>
+              </div>
+            </div>
+            
+            <div className="flex justify-between items-center text-[7px] border-t border-[rgba(201,168,118,0.1)] pt-2 mt-1">
+              <span>Staging: Local SQL</span>
+              <span className="text-[#C9A876]">Custom Client Dashboard</span>
             </div>
           </div>
         );
@@ -213,35 +336,12 @@ export default function ProjectsGrid() {
             </div>
           </div>
         );
-      case "smartbulb":
-        return (
-          <div className="relative w-full h-full flex flex-col justify-center items-center gap-6 p-8 bg-[#15130F] overflow-hidden select-none border border-[rgba(201,168,118,0.15)]">
-            {/* IoT Device visualization */}
-            <div className="relative flex flex-col items-center">
-              {/* ESP32 Chip schematic */}
-              <div className="w-20 h-28 border border-[rgba(201,168,118,0.3)] bg-[#0C0B0A] flex flex-col items-center justify-between p-3 font-mono text-[7px] text-[#8C877C]">
-                <span>ESP32-WROOM</span>
-                <div className="w-12 h-12 border border-dashed border-[#C9A876] rounded-full flex items-center justify-center text-[#C9A876] text-[8px] font-bold">
-                  mmWave
-                </div>
-                <span>LD2410C</span>
-              </div>
-              {/* Radar waves simulation */}
-              <div className="absolute -top-6 w-32 h-32 border-t border-dashed border-[#C9A876]/30 rounded-full animate-ping pointer-events-none" />
-              <div className="absolute -top-10 w-40 h-40 border-t border-dashed border-[#C9A876]/10 rounded-full animate-pulse pointer-events-none" />
-            </div>
-
-            <div className="font-mono text-[8px] text-[#8C877C] tracking-widest">
-              MQTT: ONLINE &bull; STABLE &bull; OCCUPANCY: 1
-            </div>
-          </div>
-        );
       case "teafactory":
         return (
           <div className="relative w-full h-full flex flex-col justify-between p-8 bg-[#15130F] overflow-hidden select-none border border-[rgba(201,168,118,0.15)] font-mono text-[9px] text-[#8C877C]">
             <div className="flex justify-between items-center text-[#C9A876]">
-              <span>TROUGH 04 CLIMATE</span>
-              <span>DHT22 MESH</span>
+              <span>TROUGH 04 WITHERS</span>
+              <span>DHT22 SENSOR ARRAY</span>
             </div>
 
             {/* Simulated monitor waves */}
@@ -255,9 +355,9 @@ export default function ProjectsGrid() {
               <div className="w-full bg-[#C9A876]/60 h-[70%]"></div>
             </div>
 
-            <div className="flex justify-between items-center text-[8px]">
-              <span>TEMP: 28.4°C</span>
-              <span className="text-red-400 font-bold">ALARM: WITHERS HUMIDITY EXCEEDED (88%)</span>
+            <div className="flex justify-between items-center text-[7px]">
+              <span>AMBIENT: 28.4°C</span>
+              <span className="text-[#C9A876] font-bold">WITHERS MOISTURE OPTIMIZATION ACTIVE</span>
             </div>
           </div>
         );

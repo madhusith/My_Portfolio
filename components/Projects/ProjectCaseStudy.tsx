@@ -1,9 +1,42 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { X, ArrowLeft, Cpu, Terminal, ShieldAlert, Award } from "lucide-react";
 import gsap from "gsap";
 import { Project } from "@/lib/projects";
+
+const GithubIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    width="14"
+    height="14"
+    stroke="currentColor"
+    strokeWidth="2"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+  </svg>
+);
+
+const ExternalLinkIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    width="14"
+    height="14"
+    stroke="currentColor"
+    strokeWidth="2"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    <polyline points="15 3 21 3 21 9" />
+    <line x1="10" y1="14" x2="21" y2="3" />
+  </svg>
+);
 
 interface ProjectCaseStudyProps {
   project: Project;
@@ -13,8 +46,15 @@ interface ProjectCaseStudyProps {
 export default function ProjectCaseStudy({ project, onClose }: ProjectCaseStudyProps) {
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     // Disable body scroll when modal is open
     document.documentElement.classList.add("lenis-stopped");
     document.body.style.overflow = "hidden";
@@ -39,7 +79,7 @@ export default function ProjectCaseStudy({ project, onClose }: ProjectCaseStudyP
       document.body.style.overflow = "";
       ctx.revert();
     };
-  }, []);
+  }, [mounted]);
 
   const handleClose = () => {
     gsap.to(contentRef.current, {
@@ -57,9 +97,12 @@ export default function ProjectCaseStudy({ project, onClose }: ProjectCaseStudyP
     });
   };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <div
       ref={overlayRef}
+      data-lenis-prevent
       className="fixed inset-0 z-[5000] w-full h-full bg-[#0A0908]/95 backdrop-blur-md overflow-y-auto flex justify-center py-10 px-4 md:px-8"
     >
       <div
@@ -100,6 +143,33 @@ export default function ProjectCaseStudy({ project, onClose }: ProjectCaseStudyP
           <p className="font-serif-display text-xl md:text-2xl text-[#E8D9BC] font-light leading-relaxed max-w-3xl border-l border-[#C9A876] pl-6 mt-4">
             &ldquo;{project.tagline}&rdquo;
           </p>
+
+          {(project.githubUrl || project.liveUrl) && (
+            <div className="flex flex-wrap gap-4 mt-4">
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-[10px] md:text-xs font-bold tracking-wider text-[#C9A876] hover:text-[#E8D9BC] bg-[#1E1B15] px-4 py-2 border border-[rgba(201,168,118,0.15)] hover:border-[#C9A876] transition-all duration-300"
+                >
+                  <GithubIcon />
+                  GITHUB REPOSITORY
+                </a>
+              )}
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-[10px] md:text-xs font-bold tracking-wider text-[#0A0908] bg-[#C9A876] hover:bg-[#E8D9BC] px-4 py-2 transition-all duration-300"
+                >
+                  <ExternalLinkIcon />
+                  LIVE DEMO
+                </a>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Grid: Overview & Metadata */}
@@ -197,6 +267,7 @@ export default function ProjectCaseStudy({ project, onClose }: ProjectCaseStudyP
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
