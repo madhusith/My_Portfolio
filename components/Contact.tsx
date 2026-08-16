@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Send, Mail } from "lucide-react";
+import { Send, Mail, Phone } from "lucide-react";
 
 export default function Contact() {
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
@@ -50,11 +50,20 @@ export default function Contact() {
             
             {/* Email */}
             <a
-              href="mailto:thanushika@example.com"
+              href="mailto:2004madhusith@gmail.com"
               className="flex items-center gap-4 hover:text-[#C9A876] transition-colors p-3 bg-[#15130F] border border-[rgba(201,168,118,0.1)] w-fit"
             >
               <Mail size={16} className="text-[#C9A876]" />
-              <span>EMAIL ME &rarr;</span>
+              <span>2004madhusith@gmail.com &rarr;</span>
+            </a>
+
+            {/* Phone */}
+            <a
+              href="tel:0771865678"
+              className="flex items-center gap-4 hover:text-[#C9A876] transition-colors p-3 bg-[#15130F] border border-[rgba(201,168,118,0.1)] w-fit"
+            >
+              <Phone size={16} className="text-[#C9A876]" />
+              <span>0771865678 &rarr;</span>
             </a>
 
             {/* Social Grid */}
@@ -97,6 +106,18 @@ export default function Contact() {
                   <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
                 </svg>
               </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61568166020985"
+                target="_blank"
+                rel="noreferrer"
+                className="p-3 border border-[rgba(201,168,118,0.1)] bg-[#15130F] hover:bg-[#1E1B15] text-[#8C877C] hover:text-[#C9A876] transition-all flex items-center justify-center w-10 h-10"
+                aria-label="Rome Pixels Facebook Page"
+                title="Rome Pixels (Facebook)"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+              </a>
             </div>
 
           </div>
@@ -134,7 +155,7 @@ export default function Contact() {
                 value={formState.email}
                 onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                 className="w-full bg-transparent border-b border-[rgba(201,168,118,0.2)] hover:border-[#C9A876] focus:border-[#C9A876] text-sm text-[#F4F1EA] py-2 focus:outline-none transition-colors"
-                placeholder="thanushika@example.com"
+                placeholder="yourname@domain.com"
               />
             </div>
 
